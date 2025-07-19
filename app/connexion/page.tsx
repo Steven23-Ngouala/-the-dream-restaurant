@@ -27,27 +27,27 @@ export default function ConnexionPage() {
       <h1 className="text-3xl font-bold mb-6">Connexion</h1>
       <form className="flex flex-col gap-4" onSubmit={handleConnexion}>
         <input
-          type="email"
+                      type="email"
           placeholder="Email"
           className="border rounded px-2 py-1"
           value={email}
           onChange={e => setEmail(e.target.value)}
-          required
-        />
+                      required
+                    />
         <input
           type="password"
           placeholder="Mot de passe"
           className="border rounded px-2 py-1"
           value={mdp}
           onChange={e => setMdp(e.target.value)}
-          required
-        />
+                        required
+                      />
         <button type="submit" className="bg-orange-600 text-white px-4 py-2 rounded">
-          Se connecter
+                    Se connecter
         </button>
         {erreur && <div className="text-red-600">{erreur}</div>}
         {ok && <div className="text-green-600">Connecté !</div>}
-      </form>
+                </form>
     </div>
   );
 }

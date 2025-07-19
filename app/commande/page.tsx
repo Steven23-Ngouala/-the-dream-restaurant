@@ -15,20 +15,20 @@ export default function CommandeInfoPage() {
           <div className="flex items-center justify-center gap-2 text-gray-800">
             <Phone className="w-5 h-5 text-orange-600" />
             <span className="font-semibold">068005454 / 069019696 / 053340606</span>
-          </div>
+        </div>
           <div className="flex items-center justify-center gap-2 text-gray-800">
             <MapPin className="w-5 h-5 text-orange-600" />
             <span>Sur la route de l’aéroport en diagonale du commissariat tampis</span>
           </div>
-        </div>
+                    </div>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
           <Button asChild className="bg-orange-600 hover:bg-orange-700 flex-1">
             <Link href="/menu">Voir le menu</Link>
-          </Button>
+                      </Button>
           <Button asChild variant="outline" className="flex-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
             <a href="tel:068005454">Appeler le restaurant</a>
-          </Button>
-        </div>
+                      </Button>
+                    </div>
         <div className="mt-8">
           <iframe
             src="https://www.google.com/maps?q=sur+la+route+de+l'aéroport+en+diagonale+du+commissariat+tampis+Congo+Brazzaville&output=embed"
@@ -44,4 +44,4 @@ export default function CommandeInfoPage() {
       </div>
     </div>
   );
-} 
+}

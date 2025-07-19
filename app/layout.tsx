@@ -21,6 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="icon" href="/placeholder-logo.png" type="image/png" />
+      </head>
       <body className={inter.className}>
         <PanierProvider>
           <Navigation />
