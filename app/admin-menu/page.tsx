@@ -28,7 +28,7 @@ export default function AdminMenuPage() {
   const [tab, setTab] = useState("menu");
   const [menu, setMenu] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [form, setForm] = useState({ nom: "", prix: "", description: "", categorie: "plat", image_url: "" });
+  const [form, setForm] = useState({ nom: "", prix: "", description: "", categorie: CATEGORIES[0].value, image_url: "" });
   const [file, setFile] = useState<File | null>(null);
   const [adding, setAdding] = useState(false);
   const [platDuJourId, setPlatDuJourId] = useState<string | null>(null);
@@ -94,7 +94,7 @@ export default function AdminMenuPage() {
     const { nom, prix, description, categorie } = form;
     if (!nom || !prix || !categorie) return;
     await supabase.from("menu").insert([{ nom, prix: parseFloat(prix), description, categorie, image_url }]);
-    setForm({ nom: "", prix: "", description: "", categorie: "plat", image_url: "" });
+    setForm({ nom: "", prix: "", description: "", categorie: CATEGORIES[0].value, image_url: "" });
     setFile(null);
     setAdding(false);
     setSuccess("Plat ajouté au menu !");

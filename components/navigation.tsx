@@ -27,7 +27,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src="/placeholder-logo.png" alt="Logo du restaurant" width={100} height={100} className="rounded-full" />
+            <Image src="/placeholder-logo.png" alt="Logo du restaurant" width={100} height={100} className="rounded-full" priority />
           </Link>
 
           {/* Desktop Navigation */}

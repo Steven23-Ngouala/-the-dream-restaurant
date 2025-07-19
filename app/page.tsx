@@ -28,7 +28,7 @@ export default function HomePage() {
         .select("*")
         .eq("is_plat_du_jour", true)
         .eq("archived", false)
-        .single();
+        .maybeSingle();
       setPlatDuJour(platJour);
       // Spécialités
       const { data: specs } = await supabase
@@ -196,6 +196,7 @@ export default function HomePage() {
   alt="Notre histoire"
   width={400}
   height={600}
+  style={{width: '100%', height: 'auto'}}
   className="object-contain"
   priority={true}
   quality={100}

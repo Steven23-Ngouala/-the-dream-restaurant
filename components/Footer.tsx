@@ -18,7 +18,7 @@ export default function Footer() {
           <a href="https://instagram.com/tonrestaurant" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <FaInstagram className="w-6 h-6 hover:text-pink-400" />
           </a>
-          <a href="https://tiktok.com/@tonrestaurant" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <a href="https://www.tiktok.com/@thedreamloungebar" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
             <FaTiktok className="w-6 h-6 hover:text-gray-400" />
           </a>
           <a href="mailto:thedreamrestau@gmail.com" aria-label="Email">
