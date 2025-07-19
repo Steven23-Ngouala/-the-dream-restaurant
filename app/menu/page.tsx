@@ -10,6 +10,26 @@ import { usePanier } from "@/context/PanierContext"
 import { toast } from "@/hooks/use-toast"
 import Link from "next/link"
 
+// Ajouter la liste des catégories comme dans l'admin
+const CATEGORIES = [
+  { value: "omelettes", label: "Omelettes", emoji: "🍳" },
+  { value: "sandwichs", label: "Sandwichs", emoji: "🥪" },
+  { value: "pattes", label: "Pattes", emoji: "🍝" },
+  { value: "volaille", label: "Volaille", emoji: "🍗" },
+  { value: "viandes", label: "Viandes", emoji: "🥩" },
+  { value: "poisson", label: "Poisson", emoji: "🐟" },
+  { value: "fruits-de-mer", label: "Fruits de Mer", emoji: "🦐" },
+  { value: "accompagnement", label: "Accompagnement", emoji: "🍚" },
+  { value: "boissons-jus", label: "Boissons et Jus sans Alcool", emoji: "🥤" },
+  { value: "boisson-energisante", label: "Boisson Énergisante", emoji: "⚡" },
+  { value: "bierre-importee", label: "Bierre Importé", emoji: "🍺" },
+  { value: "bierre-locale", label: "Bierre Local", emoji: "🍻" },
+  { value: "vin-mouelleux-mousseux", label: "Vin Moueleux et Mousseux", emoji: "🍷" },
+  { value: "spiritueux-apperitif-liqueurs", label: "Spiritueux Apperitif et Liqueurs", emoji: "🥃" },
+  { value: "whisky", label: "Whisky", emoji: "🥃" },
+  { value: "champagne", label: "Champagne", emoji: "🍾" },
+];
+
 export default function MenuPage() {
   const [menu, setMenu] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -18,6 +38,7 @@ export default function MenuPage() {
   // const [filterVeg, setFilterVeg] = useState(false)
   // const [filterSpicy, setFilterSpicy] = useState(false)
   // const [sortPrice, setSortPrice] = useState<"asc"|"desc"|"">("")
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const { ajouterPlat } = usePanier();
 
@@ -36,13 +57,16 @@ export default function MenuPage() {
     setLoading(false)
   }
 
-  // Recherche et filtres simples
-  let filtered = menu
+  // Filtrage par catégorie
+  let filtered = menu;
+  if (selectedCategory) {
+    filtered = filtered.filter((item: any) => item.categorie === selectedCategory);
+  }
   if (search) {
     filtered = filtered.filter((item: any) =>
       item.nom.toLowerCase().includes(search.toLowerCase()) ||
       (item.description && item.description.toLowerCase().includes(search.toLowerCase()))
-    )
+    );
   }
   // if (filterVeg) {
   //   filtered = filtered.filter((item: any) => item.vegetarian)
@@ -77,6 +101,24 @@ export default function MenuPage() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Découvrez nos plats authentiques préparés avec passion et des ingrédients frais
             </p>
+          </div>
+          {/* Barre de catégories */}
+          <div className="flex flex-wrap gap-4 justify-center mt-8">
+            <button
+              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${selectedCategory === null ? "bg-orange-600 text-white shadow" : "bg-white text-gray-700 hover:bg-orange-50 border"}`}
+              onClick={() => setSelectedCategory(null)}
+            >
+              <Star className="w-5 h-5" /> Tout
+            </button>
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat.value}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${selectedCategory === cat.value ? "bg-orange-600 text-white shadow" : "bg-white text-gray-700 hover:bg-orange-50 border"}`}
+                onClick={() => setSelectedCategory(cat.value)}
+              >
+                <span className="text-xl">{cat.emoji}</span> {cat.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

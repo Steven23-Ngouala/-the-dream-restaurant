@@ -82,21 +82,27 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50 z-10" />
         </div>
         <div className="relative z-20 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-            Bienvenue au <span className="text-orange-400">Dream</span>
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-4 animate-fade-in drop-shadow-lg">
+            Bienvenue au <span className="text-orange-400 animate-glow">Dream</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 leading-relaxed">
-            Découvrez les saveurs authentiques de l'Afrique dans un cadre moderne et chaleureux
+          <h2 className="text-lg md:text-2xl font-medium text-orange-100 mb-6 tracking-wide animate-fade-in-slow">
+            L’expérience culinaire où le goût rencontre l’élégance
+          </h2>
+          <p className="text-xl md:text-2xl mb-10 leading-relaxed text-white/90 animate-fade-in-slow">
+            <span className="font-semibold text-orange-300">Découvrez</span> une cuisine variée, généreuse et pleine de saveurs.<br />
+            Des mets soigneusement préparés, des ingrédients de qualité, des recettes uniques.<br />
+            Ici, chaque plat est une <span className="font-semibold text-orange-300">invitation au plaisir</span>.<br />
+            Pour une pause déjeuner, un moment entre amis ou un dîner raffiné.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-orange-600 hover:bg-orange-700 text-lg px-8 py-3">
+            <Button asChild size="lg" className="bg-orange-600 hover:bg-orange-700 text-lg px-10 py-4 shadow-xl transition-all duration-200">
               <Link href="/menu">Voir notre menu</Link>
             </Button>
             <Button
               asChild
               variant="outline"
               size="lg"
-              className="text-lg px-8 py-3 border-white text-white hover:bg-white hover:text-gray-900 bg-transparent"
+              className="text-lg px-10 py-4 border-white text-white hover:bg-white hover:text-gray-900 bg-transparent shadow-xl transition-all duration-200"
             >
               <Link href="/reservation">Réserver une table</Link>
             </Button>
@@ -166,8 +172,8 @@ export default function HomePage() {
             <div>
               <h2 className="text-4xl font-bold text-gray-800 mb-6">Notre Histoire</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Fondé en 2018 par la famille Diallo, The Dream est né d'un rêve : partager les saveurs authentiques de
-                l'Afrique de l'Ouest avec le monde. Chaque plat raconte une histoire, chaque épice évoque un souvenir.
+                Fondé en 2024 par la famille MBEMBA, The Dream Restaurant est né d'un rêve : partager les saveurs authentiques de
+                l'Afrique avec le monde. Chaque plat raconte une histoire, chaque épice évoque un souvenir.
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Nos recettes, transmises de génération en génération, sont préparées avec des ingrédients frais et
@@ -282,7 +288,7 @@ export default function HomePage() {
               <h3 className="text-xl font-bold text-gray-800 mb-4">Contact</h3>
               <div className="space-y-2 text-gray-600">
                 <p>Tel : 068005454 / 069019696 / 053340606</p>
-                <p>contact@thedream.fr</p>
+                <p>thedreamrestau@gmail.com</p>
                 <Button asChild variant="outline" size="sm" className="mt-4 bg-transparent">
                   <Link href="/contact">Nous contacter</Link>
                 </Button>

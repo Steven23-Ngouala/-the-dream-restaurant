@@ -45,12 +45,6 @@ export default function Navigation() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/connexion">
-                <User className="w-4 h-4 mr-2" />
-                Connexion
-              </Link>
-            </Button>
             <Button asChild variant="outline" size="sm" className="relative bg-transparent">
               <Link href="/panier">
                 <ShoppingCart className="w-4 h-4 mr-2" />
@@ -90,12 +84,6 @@ export default function Navigation() {
                   </Link>
                 ))}
                 <div className="border-t pt-4 space-y-3">
-                  <Button asChild variant="ghost" className="w-full justify-start">
-                    <Link href="/connexion" onClick={() => setIsOpen(false)}>
-                      <User className="w-4 h-4 mr-2" />
-                      Connexion
-                    </Link>
-                  </Button>
                   <Button asChild variant="outline" className="w-full justify-start relative bg-transparent">
                     <Link href="/panier" onClick={() => setIsOpen(false)}>
                       <ShoppingCart className="w-4 h-4 mr-2" />

@@ -18,10 +18,26 @@ export default function ContactPage() {
     subject: "",
     message: "",
   })
+  const [status, setStatus] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Contact form:", formData)
+    setStatus(null)
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setStatus("Votre message a bien été envoyé !")
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+      } else {
+        setStatus("Erreur lors de l'envoi. Veuillez réessayer.")
+      }
+    } catch {
+      setStatus("Erreur lors de l'envoi. Veuillez réessayer.")
+    }
   }
 
   return (
@@ -107,6 +123,7 @@ export default function ContactPage() {
                   <Send className="w-4 h-4 mr-2" />
                   Envoyer le message
                 </Button>
+                {status && <div className="text-center text-sm mt-2 text-orange-700">{status}</div>}
               </form>
             </CardContent>
           </Card>
@@ -155,7 +172,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-bold text-lg mb-2">Email</h3>
                       <p className="text-gray-600">
-                        contact@thedream.fr
+                        thedreamrestau@gmail.com
                         <br />
                         <span className="text-sm">Nous répondons sous 24h</span>
                       </p>

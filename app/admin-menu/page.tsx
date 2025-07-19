@@ -6,10 +6,22 @@ import { FaStar, FaUtensils, FaList } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
 
 const CATEGORIES = [
-  { value: "entree", label: "Entrée" },
-  { value: "plat", label: "Plat principal" },
-  { value: "dessert", label: "Dessert" },
-  { value: "boisson", label: "Boisson" },
+  { value: "omelettes", label: "Omelettes" },
+  { value: "sandwichs", label: "Sandwichs" },
+  { value: "pattes", label: "Pattes" },
+  { value: "volaille", label: "Volaille" },
+  { value: "viandes", label: "Viandes" },
+  { value: "poisson", label: "Poisson" },
+  { value: "fruits-de-mer", label: "Fruits de Mer" },
+  { value: "accompagnement", label: "Accompagnement" },
+  { value: "boissons-jus", label: "Boissons et Jus sans Alcool" },
+  { value: "boisson-energisante", label: "Boisson Énergisante" },
+  { value: "bierre-importee", label: "Bierre Importé" },
+  { value: "bierre-locale", label: "Bierre Local" },
+  { value: "vin-mouelleux-mousseux", label: "Vin Moueleux et Mousseux" },
+  { value: "spiritueux-apperitif-liqueurs", label: "Spiritueux Apperitif et Liqueurs" },
+  { value: "whisky", label: "Whisky" },
+  { value: "champagne", label: "Champagne" },
 ];
 
 export default function AdminMenuPage() {

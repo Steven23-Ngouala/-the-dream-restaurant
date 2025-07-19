@@ -22,12 +22,28 @@ export default function ReservationPage() {
     notes: "",
   })
 
+  const [status, setStatus] = useState<string | null>(null)
+
   const timeSlots = ["12:00", "12:30", "13:00", "13:30", "14:00", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30"]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Reservation data:", formData)
-    // Handle form submission
+    setStatus(null)
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setStatus("Votre réservation a bien été envoyée !")
+        setFormData({ date: "", time: "", guests: "", name: "", phone: "", email: "", notes: "" })
+      } else {
+        setStatus("Erreur lors de l'envoi. Veuillez réessayer.")
+      }
+    } catch {
+      setStatus("Erreur lors de l'envoi. Veuillez réessayer.")
+    }
   }
 
   return (
@@ -154,6 +170,7 @@ export default function ReservationPage() {
                 <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700 py-3">
                   Confirmer la réservation
                 </Button>
+                {status && <div className="text-center text-sm mt-2 text-orange-700">{status}</div>}
               </form>
             </CardContent>
           </Card>
@@ -177,7 +194,7 @@ export default function ReservationPage() {
                   <h4 className="font-medium mb-2">Contact</h4>
                   <div className="text-sm text-gray-600 space-y-1">
                     <div>📞 068005454 / 069019696 / 053340606</div>
-                    <div>📧 contact@thedream.fr</div>
+                    <div>📧 thedreamrestau@gmail.com</div>
                     <div>📍 Sur la route de l’aéroport en diagonale du commissariat tampis</div>
                     <a href="https://www.google.com/maps?q=sur+la+route+de+l'aéroport+en+diagonale+du+commissariat+tampis+Congo+Brazzaville" target="_blank" rel="noopener noreferrer" className="text-orange-700 underline">Voir sur Google Maps</a>
                   </div>

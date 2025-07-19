@@ -38,6 +38,21 @@ export default function PanierPage() {
           date: new Date().toISOString(),
         }
       ]);
+      // Envoi email notification
+      await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'commande',
+          nom,
+          tel,
+          mode: livraison ? 'livraison' : 'emporter',
+          adresse: livraison ? `${adresse}, ${cp} ${ville}` : null,
+          total,
+          paiement,
+          plats: panier.map(p => ({ id: p.id, nom: p.nom, quantite: p.quantite, prix: p.prix })),
+        }),
+      });
       setOk(true);
       viderPanier();
     } catch (err: any) {
