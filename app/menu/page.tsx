@@ -158,12 +158,12 @@ export default function MenuPage() {
         ) : filtered.length === 0 ? (
           <div>Aucun plat ou boisson trouvé.</div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((item: any) => (
-              <Card
-                key={item.id}
+            <Card
+              key={item.id}
                 className={`overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}
-              >
+            >
                 <div className="relative h-48 group">
                   <Image
                     src={item.image_url || "/placeholder.svg"}
@@ -171,24 +171,24 @@ export default function MenuPage() {
                     fill
                     className="object-cover rounded-xl border-4 border-orange-500 group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-2 left-2 flex gap-2">
+                <div className="absolute top-2 left-2 flex gap-2">
                     {item.is_plat_du_jour && (
-                      <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
-                        <ChefHat className="w-3 h-3 mr-1" />
-                        Plat du Jour
-                      </Badge>
-                    )}
+                    <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                      <ChefHat className="w-3 h-3 mr-1" />
+                      Plat du Jour
+                    </Badge>
+                  )}
                     {item.is_specialite && <Badge className="bg-orange-600">Spécialité</Badge>}
-                    {item.vegetarian && (
-                      <Badge variant="secondary" className="bg-green-100 text-green-800">
-                        Végétarien
-                      </Badge>
-                    )}
-                    {item.spicy && <Badge variant="destructive">Épicé</Badge>}
-                  </div>
+                  {item.vegetarian && (
+                    <Badge variant="secondary" className="bg-green-100 text-green-800">
+                      Végétarien
+                    </Badge>
+                  )}
+                  {item.spicy && <Badge variant="destructive">Épicé</Badge>}
                 </div>
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start mb-3">
+              </div>
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start mb-3">
                     <h3 className="text-xl font-bold text-gray-800">{item.nom}</h3>
                     <span className="text-xl font-bold text-orange-600">{item.prix} FCFA</span>
                   </div>
@@ -198,18 +198,18 @@ export default function MenuPage() {
                       <div className="flex items-center text-yellow-500">
                         <Star className="w-4 h-4 fill-current" />
                         <span className="ml-1 text-sm text-gray-600">{item.rating}</span>
-                      </div>
+                </div>
                     )}
                     <div className="flex gap-2 w-full">
                       <Button size="sm" className="bg-orange-600 hover:bg-orange-700 flex-1" onClick={() => addToCart(item)}>
-                        Ajouter au panier
-                      </Button>
+                    Ajouter au panier
+                  </Button>
                       <Link href="/panier" className="self-center text-orange-700 underline text-sm ml-2">Voir panier</Link>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
           </div>
         )}
       </div>

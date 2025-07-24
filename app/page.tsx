@@ -12,7 +12,6 @@ import { supabase } from "@/lib/supabaseClient"
 import { useEffect, useState } from "react"
 import { usePanier } from "@/context/PanierContext"
 import { toast } from "@/hooks/use-toast"
-import Head from "next/head"
 
 export default function HomePage() {
   // --- Plat du jour dynamique ---
@@ -62,30 +61,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Head>
-        <title>The Dream Restaurant - Pointe-Noire</title>
-        <meta
-          name="description"
-          content="The Dream Restaurant à Mpita Oci vers la brasserie en face PSP tempi, Pointe-Noire, Congo-Brazzaville. Découvrez notre menu varié et notre ambiance conviviale."
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Restaurant",
-              "name": "The Dream Restaurant",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Mpita Oci vers la brasserie en face PSP tempi",
-                "addressLocality": "Pointe-Noire",
-                "addressCountry": "Congo-Brazzaville"
-              },
-              "url": "https://the-dream-restaurant.vercel.app/"
-            })
-          }}
-        />
-      </Head>
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -168,25 +143,26 @@ export default function HomePage() {
                     {loading ? (
                       <div className="text-gray-400">Chargement...</div>
                     ) : platDuJour ? (
-                      <>
+                      <div>
                         <h3 className="text-3xl font-bold text-gray-800 mb-4">{platDuJour.nom}</h3>
                         <p className="text-gray-600 mb-6 leading-relaxed">{platDuJour.description}</p>
-                  <div className="flex items-center justify-between mb-6">
-                        <span className="text-3xl font-bold text-orange-600">{platDuJour.prix} FCFA</span>
-                    </div>
-                      <div className="flex gap-2 w-full">
-                        <Button className="bg-orange-600 hover:bg-orange-700 flex-1 text-lg py-3" onClick={() => addToCart(platDuJour)}>
-                          Ajouter au panier
-                        </Button>
-                        <Link href="/panier" className="self-center text-orange-700 underline text-sm ml-2">Voir panier</Link>
-                  </div>
-                    </>
-                  ) : (
-                    <div className="text-gray-400">Aucun plat du jour pour aujourd'hui.</div>
-                  )}
-                </CardContent>
-              </div>
-            </Card>
+                        <div className="flex items-center justify-between mb-6">
+                          <span className="text-3xl font-bold text-orange-600">{platDuJour.prix} FCFA</span>
+                        </div>
+                        <div className="flex gap-2 w-full">
+                          <Button className="bg-orange-600 hover:bg-orange-700 flex-1 text-lg py-3" onClick={() => addToCart(platDuJour)}>
+                            Ajouter au panier
+                          </Button>
+                          <Link href="/panier" className="self-center text-orange-700 underline text-sm ml-2">Voir panier</Link>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="text-gray-400">Aucun plat du jour pour aujourd'hui.</div>
+                    )}
+                  </CardContent>
+                </div>
+              </Card>
+            </div>
           </div>
         </section>
 
@@ -246,33 +222,33 @@ export default function HomePage() {
             ) : specialites.length === 0 ? (
               <div className="text-center text-gray-400">Aucune spécialité trouvée.</div>
             ) : (
-            <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-3 gap-8">
                 {specialites.map((dish) => (
-                <Card
+                  <Card
                     key={dish.id}
-                  className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                >
-                  <div className="relative h-48">
+                    className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                  >
+                    <div className="relative h-48">
                       <Image src={dish.image_url || "/placeholder.svg"} alt={dish.nom} fill className="object-cover" />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-start mb-3">
+                    </div>
+                    <CardContent className="p-6">
+                      <div className="flex justify-between items-start mb-3">
                         <h3 className="text-xl font-bold text-gray-800">{dish.nom}</h3>
                         <span className="text-xl font-bold text-orange-600">{dish.prix} FCFA</span>
-                    </div>
-                    <p className="text-gray-600 mb-4">{dish.description}</p>
-                    <div className="flex items-center justify-between">
+                      </div>
+                      <p className="text-gray-600 mb-4">{dish.description}</p>
+                      <div className="flex items-center justify-between">
                         <div className="flex gap-2 w-full">
                           <Button size="sm" className="bg-orange-600 hover:bg-orange-700 flex-1" onClick={() => addToCart(dish)}>
                             Ajouter au panier
                           </Button>
                           <Link href="/panier" className="self-center text-orange-700 underline text-sm ml-2">Voir panier</Link>
                         </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             )}
           </div>
         </section>
@@ -284,7 +260,6 @@ export default function HomePage() {
               <h2 className="text-4xl font-bold text-gray-800 mb-4">Informations Pratiques</h2>
               <p className="text-xl text-gray-600">Tout ce que vous devez savoir pour nous rendre visite</p>
             </div>
-
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center p-8 hover:shadow-lg transition-shadow">
                 <Clock className="w-12 h-12 text-orange-600 mx-auto mb-4" />
@@ -295,7 +270,6 @@ export default function HomePage() {
                   <p>Dimanche : 12h00 - 21h00</p>
                 </div>
               </Card>
-
               <Card className="text-center p-8 hover:shadow-lg transition-shadow">
                 <MapPin className="w-12 h-12 text-orange-600 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Adresse</h3>
@@ -306,7 +280,6 @@ export default function HomePage() {
                   </Button>
                 </div>
               </Card>
-
               <Card className="text-center p-8 hover:shadow-lg transition-shadow">
                 <Phone className="w-12 h-12 text-orange-600 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Contact</h3>
@@ -323,5 +296,5 @@ export default function HomePage() {
         </section>
       </div>
     </>
-  )
+  );
 }
