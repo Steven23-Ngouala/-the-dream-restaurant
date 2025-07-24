@@ -64,21 +64,27 @@ export default function HomePage() {
     <>
       <Head>
         <title>The Dream Restaurant - Pointe-Noire</title>
-        <meta name="description" content="The Dream Restaurant à Mpita Oci vers la brasserie en face PSP tempi, Pointe-Noire, Congo-Brazzaville. Découvrez notre menu varié et notre ambiance conviviale." />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: `{
-            "@context": "https://schema.org",
-            "@type": "Restaurant",
-            "name": "The Dream Restaurant",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Mpita Oci vers la brasserie en face PSP tempi",
-              "addressLocality": "Pointe-Noire",
-              "addressCountry": "Congo-Brazzaville"
-            },
-            "url": "https://the-dream-restaurant.vercel.app/"
-          }`
-        }} />
+        <meta
+          name="description"
+          content="The Dream Restaurant à Mpita Oci vers la brasserie en face PSP tempi, Pointe-Noire, Congo-Brazzaville. Découvrez notre menu varié et notre ambiance conviviale."
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Restaurant",
+              "name": "The Dream Restaurant",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Mpita Oci vers la brasserie en face PSP tempi",
+                "addressLocality": "Pointe-Noire",
+                "addressCountry": "Congo-Brazzaville"
+              },
+              "url": "https://the-dream-restaurant.vercel.app/"
+            })
+          }}
+        />
       </Head>
       <div className="min-h-screen">
         {/* Hero Section */}
