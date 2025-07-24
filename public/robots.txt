@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://the-dream-restaurant.vercel.app/sitemap.xml 

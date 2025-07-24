@@ -5,7 +5,7 @@ import "./globals.css"
 import Navigation from "@/components/navigation"
 import { PanierProvider } from "@/context/PanierContext";
 import Footer from "@/components/Footer";
-import SeoJsonLd from "@/components/SeoJsonLd";
+import SeoJsonLd from "./components/SeoJsonLd";
 
 const inter = Inter({ subsets: ["latin"] })
 
