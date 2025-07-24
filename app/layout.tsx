@@ -24,6 +24,7 @@ export default function RootLayout({
     <html lang="fr">
       <head>
         <link rel="icon" href="/placeholder-logo.png" type="image/png" />
+        <meta name="google-site-verification" content="7TLSS4ks0lL9C0SOovG9KOk1PfIpneZUFrjCMWfhetw" />
         <SeoJsonLd />
       </head>
       <body className={inter.className}>
