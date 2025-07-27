@@ -27,12 +27,7 @@ export default function Footer() {
         </div>
         {/* Connexion à droite */}
         <div className="flex-1 flex justify-end w-full md:w-auto">
-          <a
-            href="/connexion"
-            className="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700 transition mt-2 md:mt-0"
-          >
-            Connexion
-          </a>
+          {/* Bouton Connexion retiré */}
         </div>
       </div>
     </footer>
